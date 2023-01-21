@@ -4,24 +4,24 @@
         <mat-select>
             <!-- panelClass="sort-select"
             [(ngModel)]="sort" -->
-        
+
             <mat-option value="name">Name</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
+<div *ngIf="loading" class="loading">LOADING...</div>
+<div *ngIf="error">ERROR</div>
 <div class="items">
-    <div class="item">
-        <div class="item-thumb-container">
-            <img
-             src="https://images.squarespace-cdn.com/content/v1/60dbaf2d53a4005476dccba9/1654719941387-TAQCE0A7JNQSKSD1GFIY/streamer+item+-+noiceguy.jpg"
-             class="item-thumbnail"
-             alt="thumbnail"
-            />
+        <div *ngFor="let item of items" class="item">
+            <div class="item-thumb-container">
+                <img src="{{item.iconLink}}" class="item-thumbnail" alt="thumbnail" />
+            </div>
+            <div class="item-description">
+                <p class="item-name">{{item.shortName}}</p>
+                <p class="item-price">Base price: {{item.basePrice}}</p>
+                <p class="item-flea-price">Flea avg price:{{item.avg24hPrice}}</p>
+            </div>
         </div>
-        <div class="item-description">
-            <p class="item-name">{{string}}</p>
-            
-        </div>
-    </div>
+
 </div>
-<div *ngFor="let item of posts | async">{{posts.item.name}}</div>
+<div *ngIf="loading">LOADING...</div>

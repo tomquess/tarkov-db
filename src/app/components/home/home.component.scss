@@ -32,6 +32,12 @@
     }
   }
 
+  .loading {
+    justify-content: center;
+    color: #fff;
+  font-weight: 700;
+  }
+
   .items {
     display: flex;
     flex-wrap: wrap;

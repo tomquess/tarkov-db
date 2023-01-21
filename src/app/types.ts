@@ -6,6 +6,9 @@ export type item = {
         iconLink: string;
         url: string;
         updated: string;
+        basePrice: any;
+        agv24hPrice: any;
+
 
 
 }

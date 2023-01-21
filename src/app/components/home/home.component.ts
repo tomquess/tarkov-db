@@ -5,6 +5,7 @@ import { Apollo } from 'apollo-angular';
 import { Subscription, Observable, map, toArray } from 'rxjs';
 import { GET_ITEMS } from '../../graphql/graphql.queries';
 
+
 import { item, Query} from '../../types';
 
 @Component({
@@ -13,24 +14,23 @@ import { item, Query} from '../../types';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  posts: any;
-  loading: boolean;
+  items: any[] = [];
+  loading: true;
+  error: any;
 
   string: string = 'dsada';
  
   constructor(private apollo: Apollo) {}
-  private querySubscription: Subscription;
  
   ngOnInit() {
-    this.querySubscription = this.apollo.watchQuery<any>({
+    this.apollo.watchQuery<any>({
     query: GET_ITEMS
     })
       .valueChanges
-      .subscribe(({ data, loading }) => {
-        this.loading = loading;
-        this.posts = data.posts;
-        console.log(this.posts);
-        
+      .subscribe((result: any) => {
+        this.items = result.data.items;
+        this.loading = result.loading;
+        this.error = result.error;
       });
   }
   

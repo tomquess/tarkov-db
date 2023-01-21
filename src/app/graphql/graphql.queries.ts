@@ -9,6 +9,8 @@ query {
         wikiLink
         iconLink
         updated
+        basePrice
+        avg24hPrice
     }
   }
 `
