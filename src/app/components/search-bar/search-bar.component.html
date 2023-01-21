@@ -1,0 +1,13 @@
+<div class="search-container">
+    <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <span class="logo" routerLink="/">TarkovDB</span>
+      <input
+        class="search-input"
+        name="search"
+        ngModel
+        placeholder="Search Item"
+      />
+      <button class="search-button">Search</button>
+    </form>
+  </div>
+  
