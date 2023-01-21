@@ -1,7 +1,8 @@
+import { compileClassMetadata } from '@angular/compiler';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
-import { Subscription, Observable, map } from 'rxjs';
+import { Subscription, Observable, map, toArray } from 'rxjs';
 import { GET_ITEMS } from '../../graphql/graphql.queries';
 
 import { item, Query} from '../../types';
@@ -12,23 +13,26 @@ import { item, Query} from '../../types';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  items: Observable<item[]>;
+  posts: any;
+  loading: boolean;
 
   string: string = 'dsada';
  
   constructor(private apollo: Apollo) {}
+  private querySubscription: Subscription;
  
   ngOnInit() {
-    this.items = this.apollo.watchQuery<Query>({
-      query: GET_ITEMS
+    this.querySubscription = this.apollo.watchQuery<any>({
+    query: GET_ITEMS
     })
       .valueChanges
-      .pipe(
-        map(result => result.data.allitems)
-      );
-
-      console.log(this.items);
+      .subscribe(({ data, loading }) => {
+        this.loading = loading;
+        this.posts = data.posts;
+        console.log(this.posts);
+        
+      });
   }
-
+  
  
 }
