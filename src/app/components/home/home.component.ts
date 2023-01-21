@@ -13,6 +13,8 @@ import { item, Query} from '../../types';
 })
 export class HomeComponent implements OnInit{
   items: Observable<item[]>;
+
+  string: string = 'dsada';
  
   constructor(private apollo: Apollo) {}
  
