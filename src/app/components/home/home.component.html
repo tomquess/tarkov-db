@@ -19,7 +19,8 @@
             <div class="item-description">
                 <p class="item-name">{{item.shortName}}</p>
                 <p class="item-price">Base price: {{item.basePrice}}</p>
-                <p class="item-flea-price">Flea avg price:{{item.avg24hPrice}}</p>
+                <p *ngIf="item.avg24hPrice != 0" class="item-flea-price">Flea avg price:{{item.avg24hPrice}}</p>
+                <p *ngIf="item.avg24hPrice == 0" class="item-flea-price alert">BANNED FROM FLEA</p>
             </div>
         </div>
 
