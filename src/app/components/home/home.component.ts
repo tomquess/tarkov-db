@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit{
   items: any[] = [];
   loading: true;
   error: any;
-  searchText: string = ' ';
+  search: string = ' ';
 
   constructor(private apollo: Apollo) {}
  
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
     this.apollo.watchQuery<any>({
       query: GET_ITEMS,
       variables: {
-        searchText: this.searchText
+        search: this.search
       },
       })
         .valueChanges
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit{
   
 
   ngOnInit() {
-    console.log(this.searchText);
+    console.log(this.search);
     this.getData();
   }
   

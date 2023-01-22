@@ -1,8 +1,8 @@
 import {gql} from 'apollo-angular'
 
 const GET_ITEMS = gql`
-query ($searchText: [String]){
-    items(names: $searchText){
+query ($search: [String]){
+    items(names: $search){
         id
         name
         shortName
