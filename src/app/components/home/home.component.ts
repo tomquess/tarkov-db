@@ -1,55 +1,128 @@
 import { compileClassMetadata } from '@angular/compiler';
-import { Component, OnInit, Input ,OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
-import { filter, tap, map } from 'rxjs';
+import { filter, tap, map, pipe, take } from 'rxjs';
 import { GET_ITEMS } from '../../graphql/graphql.queries';
 
 import { Item } from 'src/app/models/item';
 
-
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   items: any[] = [];
   loading: boolean = true;
   error: boolean;
-  search?: string = " ";
-
+  search?: string = ' ';
+  @Input() totalItems: number;
+  @Input() itemsPerPage: number = 20;
+  @Input() totalItemsString: string;
+  totalPages: number;
   constructor(private apollo: Apollo) {}
 
- 
+  // getData() {
+  //   this.apollo
+  //     .watchQuery<any>({
+  //       query: GET_ITEMS,
+  //       variables: {
+  //         search: this.search,
+  //       },
+  //     })
 
+  //     .valueChanges
+  //     .subscribe((result: any) => {
+  //       this.items = result.data.items;
+  //       this.loading = result.loading;
+  //       this.error = result.error;
+  //       this.totalItems = this.items.length;
+  //     })
+  // }
 
-
-  getData() {
-    this.apollo.watchQuery<any>({
-      query: GET_ITEMS,
-      variables: {
-        search: this.search
-      },
+  async getPaginatedData() {
+    this.apollo
+      .watchQuery<any>({
+        query: GET_ITEMS,
+        variables: {
+          search: this.search,
+        },
       })
-        .valueChanges
-        .subscribe((result: any) => {
-          console.log(result);
-          this.items = result.data.items;
-          this.loading = result.loading;
-          this.error = result.error;
-          console.log(this.items);
-        });
+
+      .valueChanges.subscribe((result: any) => {
+        this.items = result.data.items;
+        this.error = result.error;
+        this.totalItems = this.items.length;
+        this.totalItemsString = String(this.totalItems);
+        this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+        this.loading = result.loading;
+      });
   }
-  
+
+  // =============================================
+
+  currentPage = 1;
+  pages: any[] = [];
 
   ngOnInit() {
-    console.log(this.search);
-    this.getData();
+    this.getPaginatedData();
+    this.getPages();
   }
-  
- 
+  ngOnChanges() {
+    this.pages = this.getPages();
+  }
+  getPages() {
+    setTimeout(() => {
+      console.log(this.totalPages);
+      for (let i = this.currentPage; i <= this.currentPage + 10; i++) {
+        this.pages.push(i);
+      }
+    }, 400);
+
+    return this.pages;
+  }
+
+  goToPage(page: number) {
+    this.currentPage = page;
+    this.pages = [];
+    if (this.currentPage >= 6) {
+      for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
+        this.pages.push(i);
+      }
+    } else {
+      for (let i = 1; i <= 10; i++) {
+        this.pages.push(i);
+      }
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      if (this.currentPage >= 6) {
+        this.pages = [];
+        for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
+          this.pages.push(i);
+        }
+      }
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      if (this.currentPage >= 6) {
+        this.pages = [];
+        for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
+          this.pages.push(i);
+        }
+      }
+    }
+  }
 }
