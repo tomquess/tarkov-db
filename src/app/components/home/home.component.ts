@@ -90,13 +90,15 @@ export class HomeComponent implements OnInit {
 
   goToPage(page: number) {
     this.currentPage = page;
-    this.pages = [];
-    if (this.currentPage >= 6) {
+    if (this.currentPage >= 6 && this.currentPage <= this.totalPages -4) {
+      this.pages = [];
       for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
         this.pages.push(i);
       }
-    } else {
+    } else if (this.currentPage <= 6) {
+      this.pages = [];
       for (let i = 1; i <= 10; i++) {
+        
         this.pages.push(i);
       }
     }
@@ -105,7 +107,7 @@ export class HomeComponent implements OnInit {
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      if (this.currentPage >= 6) {
+      if (this.currentPage >= 6 && this.currentPage <= this.totalPages -5) {
         this.pages = [];
         for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
           this.pages.push(i);
@@ -117,7 +119,7 @@ export class HomeComponent implements OnInit {
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      if (this.currentPage >= 6) {
+      if (this.currentPage >= 6 && this.currentPage <= this.totalPages -5) {
         this.pages = [];
         for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
           this.pages.push(i);
