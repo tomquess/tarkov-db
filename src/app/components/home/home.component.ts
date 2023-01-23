@@ -97,7 +97,7 @@ export class HomeComponent implements OnInit {
       }
     } else if (this.currentPage <= 6) {
       this.pages = [];
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 11; i++) {
         this.pages.push(i);
       }
     }
