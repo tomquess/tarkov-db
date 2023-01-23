@@ -90,24 +90,34 @@ export class HomeComponent implements OnInit {
 
   goToPage(page: number) {
     this.currentPage = page;
-    if (this.currentPage >= 6 && this.currentPage <= this.totalPages -4) {
+    if (this.currentPage >= 6 && this.currentPage <= this.totalPages - 5) {
       this.pages = [];
       for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
         this.pages.push(i);
       }
     } else if (this.currentPage <= 6) {
       this.pages = [];
-      for (let i = 1; i <= 10; i++) {
-        
+      for (let i = 1; i <= 11; i++) {
         this.pages.push(i);
       }
+    }
+
+    switch (this.currentPage) {
+      case 147:
+        this.pages = [];
+        for (let i = this.currentPage - 9; i <= this.currentPage + 1; i++) {
+          this.pages.push(i);
+        }
+        break;
+      default:
+        break;
     }
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      if (this.currentPage >= 6 && this.currentPage <= this.totalPages -5) {
+      if (this.currentPage >= 6 && this.currentPage <= this.totalPages - 5) {
         this.pages = [];
         for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
           this.pages.push(i);
@@ -119,7 +129,7 @@ export class HomeComponent implements OnInit {
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      if (this.currentPage >= 6 && this.currentPage <= this.totalPages -5) {
+      if (this.currentPage >= 6 && this.currentPage <= this.totalPages - 5) {
         this.pages = [];
         for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
           this.pages.push(i);
