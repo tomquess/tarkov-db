@@ -15,7 +15,7 @@ import { item, Query} from '../../types';
 })
 export class HomeComponent implements OnInit{
   items: any[] = [];
-  loading: true;
+  loading: boolean = true;
   error: any;
   search: string = ' ';
 

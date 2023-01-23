@@ -35,7 +35,24 @@
   .loading {
     justify-content: center;
     color: #fff;
+    display: flex;
   font-weight: 700;
+  font-size: xxx-large;
+  min-width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-top: 33%;
+  }
+  .error{
+    justify-content: center;
+    color: red;
+    display: flex;
+  font-weight: 700;
+  font-size: xxx-large;
+  min-width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-top: 33%;
   }
 
   .items {
