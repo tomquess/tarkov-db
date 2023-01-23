@@ -1,3 +1,9 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .filters {
   max-width: 1200px;
   margin: 20px auto;
@@ -106,13 +112,16 @@
     flex-direction: column;
     justify-content: flex-end;
     height: 157px;
+    font-weight: 600;
+    color: rgb(191, 189, 189);
+    letter-spacing: .1rem;
   }
 
   &-name {
     color: #fff;
     font-weight: 700;
     font-size: 22px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -126,4 +135,51 @@
     width: 20px;
     margin-right: 10px;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination li a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid rgba(37, 37, 37, 0.5);
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.pagination li.disabled a {
+  color: #6c757d;
+  cursor: not-allowed;
+} 
+
+.pagination li a:hover, .button-page:hover {
+  color: #3494fa;
+  cursor: pointer;
+}
+
+.button-page{
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    padding: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
