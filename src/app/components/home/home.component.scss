@@ -68,7 +68,7 @@
 }
 
 .item {
-  width: 280px;
+  width: 192px;
   margin: 10px;
   height: 330px;
   overflow: hidden;
@@ -86,7 +86,7 @@
   &-thumb-container {
     background-color: #000;
     position: relative;
-    height: 172px;
+    height: 192px;
     color: #fff;
     text-align: center;
   }
@@ -97,7 +97,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    height: 172px;
+    height: 192px;
   }
 
   &-description {
