@@ -1,6 +1,6 @@
 # Working site
 
-You can test this project yourself by coming to my [Netlify](https://comforting-dodol-834d6c.netlify.app) page
+You can test this project yourself by coming to my [Netlify](https://tarkovdb.netlify.app/) page
 
 # TarkovDb
 
