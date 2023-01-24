@@ -40,19 +40,54 @@
     font-weight: 700;
     transition-duration: 0.3s;
     cursor: pointer;
+  }
 
-    &:hover {
-      color: #3f51b5;
-      background-color: #fff;
-      border: 1px solid #3f51b5;
-    }
+  &:hover {
+    color: #3f51b5;
+    background-color: #fff;
+    border: 1px solid #3f51b5;
   }
 }
 
 .logo {
-  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  .logo {
+    padding-left: 10px;
+    padding-right: 5px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    width: 20vw;
+  }
+
+  .search {
+    &-input {
+      margin-left: 10px;
+      padding: 10px;
+      width: 50vw;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      outline: none;
+      border: none;
+    }
+    &-button{
+      width: 20vw;
+    }
+  }
+  .search-container {
+    width: 100vw;
+  }
 }
