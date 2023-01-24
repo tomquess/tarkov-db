@@ -103,25 +103,25 @@ export class HomeComponent implements OnInit {
     }
 
     switch (this.currentPage) {
-      case 147:
+      case this.totalPages - 1:
         this.pages = [];
         for (let i = this.currentPage - 9; i <= this.currentPage + 1; i++) {
           this.pages.push(i);
         }
         break;
-      case 146:
+      case this.totalPages - 2:
         this.pages = [];
         for (let i = this.currentPage - 8; i <= this.currentPage + 2; i++) {
           this.pages.push(i);
         }
         break;
-      case 145:
+      case this.totalPages - 3:
         this.pages = [];
         for (let i = this.currentPage - 7; i <= this.currentPage + 3; i++) {
           this.pages.push(i);
         }
         break;
-      case 144:
+      case this.totalPages - 4:
         this.pages = [];
         for (let i = this.currentPage - 6; i <= this.currentPage + 4; i++) {
           this.pages.push(i);
