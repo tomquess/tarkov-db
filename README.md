@@ -1,3 +1,7 @@
+# Working site
+
+You can test this project yourself by goint to my [Netlify](https://comforting-dodol-834d6c.netlify.app) page
+
 # TarkovDb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
