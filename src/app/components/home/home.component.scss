@@ -147,6 +147,9 @@
 
 .pagination li {
   display: inline-block;
+  width: 3vw;
+  text-align: center;
+  user-select: none;
 }
 
 .pagination li a {
@@ -192,6 +195,13 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 20px auto;
+  }
+
+  .pagination li {
+    display: inline-block;
+    width: 11vw;
+    text-align: center;
+    user-select: none;
   }
 
   .item {
