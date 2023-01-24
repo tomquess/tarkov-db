@@ -197,6 +197,13 @@
     margin: 20px auto;
   }
 
+  .pagination li {
+    display: inline-block;
+    width: 11vw;
+    text-align: center;
+    user-select: none;
+  }
+
   .item {
     width: 40%;
     margin: 10px;
