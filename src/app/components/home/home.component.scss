@@ -147,6 +147,9 @@
 
 .pagination li {
   display: inline-block;
+  width: 3vw;
+  text-align: center;
+  user-select: none;
 }
 
 .pagination li a {

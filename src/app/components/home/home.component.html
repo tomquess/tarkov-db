@@ -1,31 +1,5 @@
 <div *ngIf="loading" class="loading">LOADING...</div>
 <div *ngIf="error" class="error">ERROR</div>
-<div class="items">
-  <div
-    *ngFor="
-      let item of items.slice(
-        itemsPerPage * (currentPage - 1),
-        itemsPerPage * currentPage
-      )
-    "
-    class="item"
-  >
-    <div class="item-thumb-container">
-      <img src="{{ item.iconLink }}" class="item-thumbnail" alt="thumbnail" />
-    </div>
-    <div class="item-description">
-      <p class="item-name">{{ item.shortName }}</p>
-      <p class="item-price">Base price: {{ item.basePrice }}</p>
-      <p *ngIf="item.avg24hPrice != 0" class="item-flea-price">
-        Flea avg price: {{ item.avg24hPrice }}
-      </p>
-      <p *ngIf="item.avg24hPrice == 0" class="item-flea-price alert">
-        BANNED FROM FLEA
-      </p>
-    </div>
-  </div>
-</div>
-
 <div class="pagination" *ngIf="!loading">
   <nav *ngIf="totalItems > itemsPerPage">
     <ul class="pagination">
@@ -53,3 +27,30 @@
     </ul>
   </nav>
 </div>
+
+<div class="items">
+  <div
+    *ngFor="
+      let item of items.slice(
+        itemsPerPage * (currentPage - 1),
+        itemsPerPage * currentPage
+      )
+    "
+    class="item"
+  >
+    <div class="item-thumb-container">
+      <img src="{{ item.iconLink }}" class="item-thumbnail" alt="thumbnail" />
+    </div>
+    <div class="item-description">
+      <p class="item-name">{{ item.shortName }}</p>
+      <p class="item-price">Base price: {{ item.basePrice }}</p>
+      <p *ngIf="item.avg24hPrice != 0" class="item-flea-price">
+        Flea avg price: {{ item.avg24hPrice }}
+      </p>
+      <p *ngIf="item.avg24hPrice == 0" class="item-flea-price alert">
+        BANNED FROM FLEA
+      </p>
+    </div>
+  </div>
+</div>
+

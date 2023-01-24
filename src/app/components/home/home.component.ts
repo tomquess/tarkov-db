@@ -109,6 +109,24 @@ export class HomeComponent implements OnInit {
           this.pages.push(i);
         }
         break;
+      case 146:
+        this.pages = [];
+        for (let i = this.currentPage - 8; i <= this.currentPage + 2; i++) {
+          this.pages.push(i);
+        }
+        break;
+      case 145:
+        this.pages = [];
+        for (let i = this.currentPage - 7; i <= this.currentPage + 3; i++) {
+          this.pages.push(i);
+        }
+        break;
+      case 144:
+        this.pages = [];
+        for (let i = this.currentPage - 6; i <= this.currentPage + 4; i++) {
+          this.pages.push(i);
+        }
+        break;
       default:
         break;
     }
